@@ -1,8 +1,12 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 
 export const CreateScreen = () => {
-  return <View style={styles.center}>Create</View>;
+  return (
+    <View style={styles.center}>
+      <Text>Create</Text>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({

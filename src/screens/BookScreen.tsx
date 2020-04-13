@@ -1,8 +1,12 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 export const BookScreen = () => {
-  return <View style={styles.center}>Book</View>;
+  return (
+    <View style={styles.center}>
+      <Text> Book</Text>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({

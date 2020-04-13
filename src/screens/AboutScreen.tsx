@@ -1,8 +1,15 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet } from 'react-native';
+import { INavigation } from '../interfaces';
 
-export const AboutScreen = () => {
-  return <View style={styles.center}>About</View>;
+export const AboutScreen: React.FC<INavigation> = ({ navigation }) => {
+  return (
+    <View style={styles.center}>
+      <Text>About</Text>
+
+      <Button title='Go to Main' onPress={() => navigation.navigate('About')} />
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({

@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { Text, View } from 'react-native';
 import { AppLoading } from 'expo';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { bootstrap } from './src/bootstrap';
+import { MainScreen } from './src/screens/MainScreen';
+import { AboutScreen } from './src/screens/AboutScreen';
 
 export default function App() {
   const [isReady, setIsReady] = useState<boolean>(false);
@@ -16,9 +19,17 @@ export default function App() {
     );
   }
 
+  const Stack = createStackNavigator();
+
   return (
-    <View>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName='Home'
+        screenOptions={{ gestureEnabled: false }}
+      >
+        <Stack.Screen name='Home' component={MainScreen} />
+        <Stack.Screen name='About' component={AboutScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
