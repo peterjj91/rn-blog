@@ -7,7 +7,7 @@ export const AboutScreen: React.FC<INavigation> = ({ navigation }) => {
     <View style={styles.center}>
       <Text>About</Text>
 
-      <Button title='Go to Main' onPress={() => navigation.navigate('About')} />
+      <Button title='Go to Home' onPress={() => navigation.navigate('Home')} />
     </View>
   );
 };
