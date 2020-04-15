@@ -1,31 +1,38 @@
-import React from 'react';
-import { View, StyleSheet, Button, Text, FlatList } from 'react-native';
+import React, { useLayoutEffect } from 'react';
+import { View, StyleSheet, FlatList } from 'react-native';
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { INavigation, IPostItem } from '../interfaces';
 import { DATA } from '../data';
 import { Post } from '../components/Post';
+import { AppHeaderIcon } from '../components/AppHeaderIcon';
 
 export const MainScreen: React.FC<INavigation> = ({ navigation }) => {
   const openPostHandler = (post: IPostItem) => {
     navigation.navigate('Post', { postId: post.id, date: post.date });
   };
 
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+          <Item
+            title='Tale photo'
+            iconName='ios-camera'
+            onPress={() => console.log('Tale photo')}
+          />
+        </HeaderButtons>
+      ),
+    });
+  }, []);
+
   return (
     <View style={styles.center}>
-      <Text>Main</Text>
-
       <FlatList
         data={DATA}
         keyExtractor={(post) => post.id.toString()}
         renderItem={({ item }) => <Post post={item} onOpen={openPostHandler} />}
         style={styles.list}
       />
-
-      <Button
-        title='Go to About'
-        onPress={() => navigation.navigate('About')}
-      />
-
-      <Button title='Go to Post' onPress={() => navigation.navigate('Post')} />
     </View>
   );
 };

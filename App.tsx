@@ -8,6 +8,7 @@ import { MainScreen } from './src/screens/MainScreen';
 import { AboutScreen } from './src/screens/AboutScreen';
 import { THEME } from './src/theme';
 import { PostScreen } from './src/screens/PostScreen';
+import { INavigation } from './src/interfaces';
 
 export default function App() {
   const [isReady, setIsReady] = useState<boolean>(false);
@@ -56,8 +57,9 @@ export default function App() {
         <Stack.Screen
           name='Post'
           component={PostScreen}
-          // options={{ headerTitle: 'My Post' }}
-          options={({ route }) => ({ headerTitle: route.params.title })}
+          options={({ route }) => ({
+            headerTitle: route.params.title,
+          })}
         />
       </Stack.Navigator>
     </NavigationContainer>
