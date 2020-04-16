@@ -47,7 +47,7 @@ export default function App() {
           name='Home'
           component={MainScreen}
           options={{
-            headerTitle: 'My Home',
+            headerTitle: 'Home',
           }}
         />
         <Stack.Screen
@@ -68,14 +68,14 @@ export default function App() {
           name='Home'
           component={MainScreen}
           options={{
-            headerTitle: 'My Home',
+            headerTitle: 'Home',
           }}
         />
         <Stack.Screen
           name='Booked'
           component={BookScreen}
           options={({ route }) => ({
-            headerTitle: 'My Booked',
+            headerTitle: 'Favourite',
           })}
         />
       </Stack.Navigator>
