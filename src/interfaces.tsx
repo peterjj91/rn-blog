@@ -10,6 +10,7 @@ export interface INavigation {
       postId: string;
       date: string;
       title: string;
+      booked: boolean;
     };
   };
 }

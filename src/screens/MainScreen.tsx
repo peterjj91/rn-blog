@@ -8,11 +8,24 @@ import { AppHeaderIcon } from '../components/AppHeaderIcon';
 
 export const MainScreen: React.FC<INavigation> = ({ navigation }) => {
   const openPostHandler = (post: IPostItem) => {
-    navigation.navigate('Post', { postId: post.id, date: post.date });
+    navigation.navigate('Post', {
+      postId: post.id,
+      date: post.date,
+      booked: post.booked,
+    });
   };
 
   useLayoutEffect(() => {
     navigation.setOptions({
+      headerLeft: () => (
+        <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+          <Item
+            title='Toggle Drawer'
+            iconName='ios-menu'
+            onPress={() => console.log('Tale menu')}
+          />
+        </HeaderButtons>
+      ),
       headerRight: () => (
         <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
           <Item

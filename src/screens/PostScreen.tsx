@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useEffect } from 'react';
 import {
   View,
   Text,
@@ -11,6 +11,8 @@ import {
 import { DATA } from '../data';
 import { THEME } from '../theme';
 import { INavigation, IPostItem } from '../interfaces';
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import { AppHeaderIcon } from '../components/AppHeaderIcon';
 
 interface IPostScreen extends INavigation {}
 
@@ -34,10 +36,20 @@ export const PostScreen: React.FC<IPostScreen> = ({ navigation, route }) => {
   };
 
   useLayoutEffect(() => {
-    const { date } = route.params;
+    const { date, booked } = route.params;
+    const iconName = booked ? 'ios-star' : 'ios-star-outline';
 
     navigation.setOptions({
       title: 'Post from' + new Date(date).toLocaleDateString(),
+      headerRight: () => (
+        <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+          <Item
+            title='Tale photo'
+            iconName={iconName}
+            onPress={() => console.log('Tale photo')}
+          />
+        </HeaderButtons>
+      ),
     });
   }, [navigation]);
 
