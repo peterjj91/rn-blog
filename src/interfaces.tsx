@@ -22,3 +22,10 @@ export interface IPostItem {
   date: string;
   booked: boolean;
 }
+
+export interface IIconWithBadge {
+  name: string;
+  badgeCount: number;
+  color: string;
+  size: number;
+}
