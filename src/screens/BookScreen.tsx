@@ -1,12 +1,13 @@
 import React, { useLayoutEffect } from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { INavigation, IPostItem } from '../interfaces';
 import { DATA } from '../data';
-import { Post } from '../components/Post';
 import { AppHeaderIcon } from '../components/AppHeaderIcon';
+import { PostList } from '../components/PostList';
 
 export const BookScreen: React.FC<INavigation> = ({ navigation }) => {
+  const data = DATA.filter((p) => p.booked);
   const openPostHandler = (post: IPostItem) => {
     navigation.navigate('Post', {
       postId: post.id,
@@ -29,25 +30,7 @@ export const BookScreen: React.FC<INavigation> = ({ navigation }) => {
     });
   }, []);
 
-  return (
-    <View style={styles.center}>
-      <FlatList
-        data={DATA.filter((p) => p.booked)}
-        keyExtractor={(post) => post.id.toString()}
-        renderItem={({ item }) => <Post post={item} onOpen={openPostHandler} />}
-        style={styles.list}
-      />
-    </View>
-  );
+  return <PostList data={data} onOpen={openPostHandler} />;
 };
 
-const styles = StyleSheet.create({
-  center: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  list: {
-    width: '100%',
-  },
-});
+const styles = StyleSheet.create({});

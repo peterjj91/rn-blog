@@ -19,7 +19,6 @@ export const AppNavigation = () => {
       : createBottomTabNavigator();
 
   const screenOptions = {
-    gestureEnabled: false,
     headerStyle: {
       backgroundColor:
         Platform.OS === 'android' ? THEME.MAIN_COLOR : THEME.LIGHT_COLOR,
@@ -33,42 +32,18 @@ export const AppNavigation = () => {
 
   function Home() {
     return (
-      <Stack.Navigator initialRouteName='Home' screenOptions={screenOptions}>
-        <Stack.Screen
-          name='Home'
-          component={MainScreen}
-          options={{
-            headerTitle: 'Home',
-          }}
-        />
-        <Stack.Screen
-          name='Post'
-          component={PostScreen}
-          options={({ route }) => ({
-            headerTitle: route.params.title,
-          })}
-        />
+      <Stack.Navigator screenOptions={screenOptions}>
+        <Stack.Screen name='Home' component={MainScreen} />
+        <Stack.Screen name='Post' component={PostScreen} />
       </Stack.Navigator>
     );
   }
 
   function Booked() {
     return (
-      <Stack.Navigator initialRouteName='Booked' screenOptions={screenOptions}>
-        <Stack.Screen
-          name='Booked'
-          component={BookScreen}
-          options={({ route }) => ({
-            headerTitle: 'Favourite',
-          })}
-        />
-        <Stack.Screen
-          name='Post'
-          component={PostScreen}
-          options={({ route }) => ({
-            headerTitle: route.params.title,
-          })}
-        />
+      <Stack.Navigator screenOptions={screenOptions}>
+        <Stack.Screen name='Booked' component={BookScreen} />
+        <Stack.Screen name='Post' component={PostScreen} />
       </Stack.Navigator>
     );
   }
