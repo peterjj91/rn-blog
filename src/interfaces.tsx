@@ -4,6 +4,7 @@ export interface INavigation {
     push: Function;
     getParam: Function;
     setOptions: Function;
+    openDrawer: Function;
   };
   route: {
     params: {

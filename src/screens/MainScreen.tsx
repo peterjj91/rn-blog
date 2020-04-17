@@ -22,7 +22,7 @@ export const MainScreen: React.FC<INavigation> = ({ navigation }) => {
           <Item
             title='Toggle Drawer'
             iconName='ios-menu'
-            onPress={() => console.log('Tale menu')}
+            onPress={() => navigation.openDrawer()}
           />
         </HeaderButtons>
       ),
