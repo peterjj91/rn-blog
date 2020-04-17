@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import { INavigation } from '../interfaces';
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import { AppHeaderIcon } from '../components/AppHeaderIcon';
 
 export const AboutScreen: React.FC<INavigation> = ({ navigation }) => {
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+        <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+          <Item
+            title='Toggle Drawer'
+            iconName='ios-menu'
+            onPress={() => navigation.openDrawer()}
+          />
+        </HeaderButtons>
+      ),
+    });
+  }, []);
+
   return (
     <View style={styles.center}>
       <Text>About</Text>

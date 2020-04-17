@@ -31,7 +31,7 @@ export const MainScreen: React.FC<INavigation> = ({ navigation }) => {
           <Item
             title='Tale photo'
             iconName='ios-camera'
-            onPress={() => console.log('Tale photo')}
+            onPress={() => navigation.navigate('Create')}
           />
         </HeaderButtons>
       ),

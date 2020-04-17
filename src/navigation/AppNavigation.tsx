@@ -38,6 +38,7 @@ export const AppNavigation = () => {
       <Stack.Navigator screenOptions={screenOptions}>
         <Stack.Screen name='Home' component={MainScreen} />
         <Stack.Screen name='Book' component={BookScreen} />
+        <Tab.Screen name='Post' component={PostScreen} />
       </Stack.Navigator>
     );
   }
@@ -83,12 +84,42 @@ export const AppNavigation = () => {
     );
   }
 
+  function Create() {
+    return (
+      <Stack.Navigator
+        barStyle={{
+          backgroundColor:
+            Platform.OS === 'android' ? THEME.MAIN_COLOR : THEME.LIGHT_COLOR,
+        }}
+        activeColor={Platform.OS === 'android' ? 'white' : 'tomato'}
+        inactiveColor={'gray'}
+      >
+        <Stack.Screen name='Create' component={CreateScreen} />
+      </Stack.Navigator>
+    );
+  }
+
+  function About() {
+    return (
+      <Stack.Navigator
+        barStyle={{
+          backgroundColor:
+            Platform.OS === 'android' ? THEME.MAIN_COLOR : THEME.LIGHT_COLOR,
+        }}
+        activeColor={Platform.OS === 'android' ? 'white' : 'tomato'}
+        inactiveColor={'gray'}
+      >
+        <Stack.Screen name='About' component={AboutScreen} />
+      </Stack.Navigator>
+    );
+  }
+
   return (
     <NavigationContainer>
       <Drawer.Navigator>
-        <Drawer.Screen name='Post Tabs' component={Home} />
-        <Drawer.Screen name='About' component={AboutScreen} />
-        <Drawer.Screen name='Create' component={CreateScreen} />
+        <Drawer.Screen name='Posts' component={Home} />
+        <Drawer.Screen name='About' component={About} />
+        <Drawer.Screen name='Create' component={Create} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
